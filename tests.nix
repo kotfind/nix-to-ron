@@ -8,8 +8,10 @@
 in {
   simple = assertEq (hello "Ivan") "Hello, Ivan!";
 
-  multiple-test = [
-    (assertEq (hello "John") "Hello, John!")
-    (assertEq (hello "Peter") "Hello, Peter!")
-  ];
+  multiple-test = {
+    x = {
+      z = assertEq (hello "John") "Hello, john!"; # <- this one should fail
+    };
+    y = assertEq (hello "Peter") "Hello, Peter!";
+  };
 }
