@@ -8,6 +8,7 @@
   inherit (builtins) tryEval deepSeq isBool trace;
   inherit (lib.attrsets) foldlAttrs;
   inherit (lib.strings) concatStringsSep;
+  inherit (lib.lists) optionals;
   inherit (pkgs) writeText;
 
   emptyTestingResult = {
@@ -61,17 +62,29 @@
 
     verdict =
       if isSuccess testingResult
-      then "All test passed!"
+      then "ALL TEST PASSED!"
       else "SOME TESTS FAILED!";
   in
-    concatStringsSep "\n" [
-      ""
-      "Passed: ${passed}"
-      ""
-      "Failed: ${failed}"
-      ""
-      verdict
-    ];
+    concatStringsSep "\n" (
+      [
+        ""
+        ""
+      ]
+      ++ (optionals (testingResult.passed != []) [
+        ""
+        "Passed: ${passed}"
+      ])
+      ++ (optionals (testingResult.failed != []) [
+        ""
+        "Failed: ${failed}"
+      ])
+      ++ [
+        ""
+        verdict
+        ""
+        ""
+      ]
+    );
 
   # @param testingResult TestingResult
   # @return string

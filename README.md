@@ -13,7 +13,7 @@
             <pre>
 {
     type = "ron";
-    kind = "number";
+    kind = "num";
     value = 42;
 }
             </pre>
@@ -58,7 +58,7 @@
             <pre>
 {
     type = "ron";
-    kind = "string";
+    kind = "str";
     value = "smth";
 }
             </pre>
@@ -79,7 +79,7 @@
             <pre>
 {
     type = "ron";
-    kind = "optional";
+    kind = "opt";
     has&lowbar;value = true;
     value = ...;
 }
@@ -94,7 +94,7 @@
             <pre>
 {
     type = "ron";
-    kind = "optional";
+    kind = "opt";
     has&lowbar;value = false;
     value = null;
 }
@@ -110,7 +110,7 @@
             <pre>
 {
     type = "ron";
-    kind = "tuple";
+    kind = "tup";
     name = "MyTuple";
     value = ["abc", 42, true];
 }
@@ -125,7 +125,7 @@
             <pre>
 {
     type = "ron";
-    kind = "tuple";
+    kind = "tup";
     name = null;
     value = ["abc", 42, true];
 }
@@ -141,7 +141,7 @@
             <pre>
 {
     type = "ron";
-    kind = "list";
+    kind = "lst";
     value = ["abc", 42, true];
 }
             </pre>
@@ -197,9 +197,9 @@
         </td>
         <td>&empty;</td>
     </tr>
-    <!-- Unit Value -->
+    <!-- Unit -->
     <tr>
-        <td>Unit Value</td>
+        <td>Unit</td>
         <td>SMTH</td>
         <td>
             <pre>
