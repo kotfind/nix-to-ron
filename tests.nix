@@ -24,6 +24,8 @@
     tup
     ntup
     lst
+    struct
+    nstruct
     map_
     unit
     ;
@@ -70,6 +72,18 @@ in {
   lst = [
     (assertCast (lst ["abc" 123 true]) "[\"abc\", 123, true]")
     (assertCast (lst [1 (tup [2 3])]) "[1, (2, 3)]")
+  ];
+
+  struct = [
+    (assertCast (struct {
+      a = 1;
+      b = true;
+    }) "(a:1,b:true)")
+
+    (assertCast (nstruct "MyStruct" {
+      a = 1;
+      b = true;
+    }) "MyStruct(a:1,b:true)")
   ];
 
   map = [

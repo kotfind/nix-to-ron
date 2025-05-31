@@ -13,6 +13,7 @@
   inherit (cmp) isRon;
   inherit (lib.lists) all;
   inherit (lib.attrsets) mapAttrsToList;
+  inherit (lib.trivial) id;
 
   # -------------------- Helpers --------------------
 
@@ -66,7 +67,7 @@
   # -------------------- Struct --------------------
 
   nstruct = name: v:
-    assert all (mapAttrsToList (_: isRon) v);
+    assert all id (mapAttrsToList (_: isRon) v);
       xval "struct" v {inherit name;};
 
   struct = nstruct null;
